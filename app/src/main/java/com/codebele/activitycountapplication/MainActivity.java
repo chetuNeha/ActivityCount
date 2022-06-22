@@ -10,15 +10,14 @@ import android.widget.Button;
 
 import com.codebele.countactivities.CountActivity;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 Button btn_click;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btn_click =(Button)findViewById(R.id.btn_click);
-        ++activityCount; // increment count value by 1 if activity is opened
-        CountActivity.setCount(getApplicationContext(), activityCount);//passing count value to library and saves count
+        CountActivity.IncrementCount(getApplicationContext()); //Increment Count by 1
         openSecondActivity();// open next Activity method
     }
 
@@ -35,6 +34,6 @@ Button btn_click;
     @Override
     public void onDestroy() {
         super.onDestroy();
-        --activityCount; // decrement count value by 1 if activity is destroyed
+        CountActivity.DecrementCount(getApplicationContext()); // decrement count value by 1 if activity is destroyed
     }
 }
